@@ -5,7 +5,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.navigation.NavController
-import com.hexagon.myemployees.core.presentation.navigation.NavArguments
+import com.hexagon.myemployees.core.presentation.navigation.Arguments
 import com.hexagon.myemployees.core.presentation.navigation.Routes
 
 @Composable
@@ -29,12 +29,12 @@ fun rememberEmployeesActions(
     remember(coordinator) {
         EmployeesActions(
             addNewEmployee = {
-                val route = Routes.EditEmployee.link.replace("{${NavArguments.EMPLOYEE_ID_KEY}}", "null")
+                val route = Routes.EditEmployee.link.replace("{${Arguments.EMPLOYEE_ID_KEY}}", "null")
                 navController.navigate(route)
             },
             editEmployee = {
                 val route = Routes.EditEmployee.link.replace(
-                    "{${NavArguments.EMPLOYEE_ID_KEY}}",
+                    "{${Arguments.EMPLOYEE_ID_KEY}}",
                     it.toString()
                 )
                 navController.navigate(route)

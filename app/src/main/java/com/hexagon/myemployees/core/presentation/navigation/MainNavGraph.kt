@@ -23,9 +23,9 @@ fun MainNavGraph(
         }
         composable(
             route = Routes.EditEmployee.link,
-            arguments = listOf(navArgument(NavArguments.EMPLOYEE_ID_KEY) { nullable = true })
+            arguments = listOf(navArgument(Arguments.EMPLOYEE_ID_KEY) { nullable = true })
         ) { backStackEntry ->
-            val employeeId = backStackEntry.arguments?.getString(NavArguments.EMPLOYEE_ID_KEY)
+            val employeeId = backStackEntry.arguments?.getString(Arguments.EMPLOYEE_ID_KEY)
             EditEmployeeRoute(
                 navController = navController,
                 employeeId = employeeId?.toIntOrNull()
