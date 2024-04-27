@@ -29,21 +29,22 @@ fun rememberEmployeesActions(
     remember(coordinator) {
         EmployeesActions(
             addNewEmployee = {
-                val route = Routes.EditEmployee.link.replace("{${Arguments.EMPLOYEE_ID_KEY}}", "null")
+                val route = Routes.EditEmployee.linkWithEmployeeId()
                 navController.navigate(route)
             },
-            editEmployee = {
-                val route = Routes.EditEmployee.link.replace(
-                    "{${Arguments.EMPLOYEE_ID_KEY}}",
-                    it.toString()
-                )
+            editEmployee = { employeeId ->
+                val route = Routes.EditEmployee.linkWithEmployeeId(employeeId)
                 navController.navigate(route)
             },
-            deleteEmployee = {
-                coordinator.viewModel.deleteEmployee(it)
+            deleteEmployee = { employeeId ->
+                employeeId?.let {
+                    coordinator.viewModel.deleteEmployee(it)
+                }
             },
-            toggleIsActive = {
-                coordinator.viewModel.toggleEmployeeIsActive(it)
+            toggleIsActive = { employeeId ->
+                employeeId?.let {
+                    coordinator.viewModel.toggleEmployeeIsActive(employeeId)
+                }
             },
         )
     }

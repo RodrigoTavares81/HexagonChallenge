@@ -8,7 +8,7 @@ data class EmployeesState(
 
 data class EmployeesActions(
     val addNewEmployee: () -> Unit,
-    val editEmployee: (employeeId: Int) -> Unit,
-    val deleteEmployee: (employeeId: Int) -> Unit,
-    val toggleIsActive: (employeeId: Int) -> Unit,
+    val editEmployee: (employeeId: Int?) -> Unit,
+    val deleteEmployee: (employeeId: Int?) -> Unit,
+    val toggleIsActive: (employeeId: Int?) -> Unit,
 )

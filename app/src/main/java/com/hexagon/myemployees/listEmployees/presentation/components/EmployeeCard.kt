@@ -35,9 +35,9 @@ import com.hexagon.myemployees.core.domain.models.Employee
 @Composable
 fun EmployeeCard(
     employee: Employee,
-    onEdit: (employeeId: Int) -> Unit,
-    onDelete: (employeeId: Int) -> Unit,
-    onToggleIsActive: (employeeId: Int) -> Unit,
+    onEdit: (employeeId: Int?) -> Unit,
+    onDelete: (employeeId: Int?) -> Unit,
+    onToggleIsActive: (employeeId: Int?) -> Unit,
 ) {
     Card(
         modifier = Modifier
@@ -76,7 +76,7 @@ fun EmployeeCard(
                 modifier = Modifier
                     .size(28.dp)
                     .clickable {
-                        onToggleIsActive.invoke(employee.id!!)
+                        onToggleIsActive.invoke(employee.id)
                     }
                     .constrainAs(toggleIsActiveButton) {
                         centerVerticallyTo(parent)
@@ -93,7 +93,7 @@ fun EmployeeCard(
                 },
                 modifier = Modifier
                     .size(28.dp)
-                    .clickable { onEdit.invoke(employee.id!!) }
+                    .clickable { onEdit.invoke(employee.id) }
                     .constrainAs(editButton) {
                         centerVerticallyTo(parent)
                         end.linkTo(deleteButton.start, 32.dp)
@@ -105,7 +105,7 @@ fun EmployeeCard(
                 tint = LocalContentColor.current,
                 modifier = Modifier
                     .size(28.dp)
-                    .clickable { onDelete.invoke(employee.id!!) }
+                    .clickable { onDelete.invoke(employee.id) }
                     .constrainAs(deleteButton) {
                         centerVerticallyTo(parent)
                         end.linkTo(parent.end, 8.dp)
