@@ -1,4 +1,9 @@
+Desafio Hexagon
+
+https://github.com/RodrigoTavares81/HexagonChallenge/assets/167454432/a5c393d7-918e-4980-866d-96b73149a4e8
+
 ## Dependências importantes do projeto
+
 
 #### Dagger Hilt
 
